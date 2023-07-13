@@ -24,13 +24,15 @@ public class GComputadoresService {
 	@Produces("application/json")
 	public Computadores misDatos(){
 		Computadores p=new Computadores();
+		p.setMarca("HP");
+		p.setProcesador("Intel");
 		return p;
 	}
 	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response guardarComputadores(Computadores computadores) {
+	public Response guardarComputadores(Computadores computadores) throws Exception{
 		try {
 			gComputadores.guardarComputadores(computadores);
 			return Response.status(Response.Status.OK).entity(computadores).build();
